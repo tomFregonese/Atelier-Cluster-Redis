@@ -1,0 +1,18 @@
+version: "3.3"
+services:
+  redis:
+    image: redis:6.0.7
+    container_name: redis
+    restart: always
+    volumes:
+      - dbSaves/redis:/data/db
+    ports:
+      - 6379:6379
+  #redis_insight:
+  #  image: redislabs/redisinsight:latest
+  #  container_name: redis_insight
+  #  restart: always
+  #  ports:
+  #    - 8001:8001
+  #  volumes:
+  #    - dbSaves/redis_insight:/data/db
