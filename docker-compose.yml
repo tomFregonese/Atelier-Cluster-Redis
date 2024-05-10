@@ -4,7 +4,7 @@ services:
     image: redis:6.0.7
     restart: always
     volumes:
-      - redis:/data/db
+      - ./dbSaves/redis1:/data/db
     ports:
       - 6379:6379
   redis2:
@@ -12,7 +12,7 @@ services:
     image: redis:6.0.7
     restart: always
     volumes:
-      - redis:/data/db
+      - ./dbSaves/redis2:/data/db
     ports:
       - 6380:6379
   redis3:
@@ -20,7 +20,7 @@ services:
     image: redis:6.0.7
     restart: always
     volumes:
-      - redis:/data/db
+      - ./dbSaves/redis3:/data/db
     ports:
       - 6381:6379
   #redis_insight:
