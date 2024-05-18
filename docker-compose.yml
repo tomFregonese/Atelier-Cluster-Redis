@@ -1,28 +1,25 @@
 services:
   redis1:
-    container_name: redis1
-    image: redis:6.0.7
-    restart: always
-    volumes:
-      - ./dbSaves/redis1:/data/db
+    image: redis:latest
     ports:
-      - 6379:6379
+      - "6379:6379"
+    volumes:
+      - ./dbSaves/redis1:/data/db/redis.conf
+    command: redis-server /data/db/redis.conf
   redis2:
-    container_name: redis2
-    image: redis:6.0.7
-    restart: always
-    volumes:
-      - ./dbSaves/redis2:/data/db
+    image: redis:latest
     ports:
-      - 6380:6379
+      - "6380:6380"
+    volumes:
+      - ./dbSaves/redis2:/data/db/redis.conf
+    command: redis-server /data/db/redis.conf
   redis3:
-    container_name: redis3
-    image: redis:6.0.7
-    restart: always
-    volumes:
-      - ./dbSaves/redis3:/data/db
+    image: redis:latest
     ports:
-      - 6381:6379
+      - "6381:6381"
+    volumes:
+      - ./dbSaves/redis3:/data/db/redis.conf
+    command: redis-server /data/db/redis.conf
   #redis_insight:
   #  container_name: redis_insight
   #  image: redislabs/redisinsight:latest
@@ -31,6 +28,13 @@ services:
   #    - 8001:8001
   #  volumes:
   #    - redis_insight:/data/db
+  redis-cluster:
+    image: redis:latest
+    hostname: server
+    depends_on:
+      - redis1
+      - redis2
+      - redis3
 
 networks:
   redisCluster:
