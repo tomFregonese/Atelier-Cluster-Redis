@@ -4,7 +4,6 @@
 
 ### Prérequis :
 - Docker et docker-compose installés 
-- npm installé 
 - Accès à internet
 
 <br>
